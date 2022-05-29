@@ -1,0 +1,6 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<?php include_once("header_kasir.php");?>
+
+<script src="./js/home.js"></script>
+
