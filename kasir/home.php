@@ -2,51 +2,12 @@
 <html class="loading" lang="en" data-textdirection="ltr">
 <!-- BEGIN: Head-->
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-    <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
-    <meta name="author" content="PIXINVENT">
-    <title>Dashboard ecommerce - Vuexy - Bootstrap HTML admin template</title>
-    <link rel="apple-touch-icon" href="../template/app-assets/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="../template/app-assets/images/ico/favicon.ico">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 
-    <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="../template/app-assets/vendors/css/vendors.min.css">
-    <link rel="stylesheet" type="text/css" href="../template/app-assets/vendors/css/charts/apexcharts.css">
-    <link rel="stylesheet" type="text/css" href="../template/app-assets/vendors/css/file-uploaders/dropzone.min.css">
-    <link rel="stylesheet" type="text/css" href="../template/app-assets/vendors/css/tables/datatable/datatables.min.css">
-    <link rel="stylesheet" type="text/css" href="../template/app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css">
-    <!-- END: Vendor CSS-->
-
-    <!-- BEGIN: Theme CSS-->
-    <link rel="stylesheet" type="text/css" href="../template/app-assets/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../template/app-assets/css/bootstrap-extended.css">
-    <link rel="stylesheet" type="text/css" href="../template/app-assets/css/colors.css">
-    <link rel="stylesheet" type="text/css" href="../template/app-assets/css/components.css">
-    <link rel="stylesheet" type="text/css" href="../template/app-assets/css/themes/dark-layout.css">
-    <link rel="stylesheet" type="text/css" href="../template/app-assets/css/themes/semi-dark-layout.css">
-
-    <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="../template/app-assets/css/core/menu/menu-types/vertical-menu.css">
-    <link rel="stylesheet" type="text/css" href="../template/app-assets/css/core/colors/palette-gradient.css">
-    <link rel="stylesheet" type="text/css" href="../template/app-assets/css/pages/dashboard-ecommerce.css">
-    <link rel="stylesheet" type="text/css" href="../template/app-assets/css/pages/card-analytics.css">
-    <link rel="stylesheet" type="text/css" href="../template/app-assets/css/plugins/file-uploaders/dropzone.css">
-    <link rel="stylesheet" type="text/css" href="../template/app-assets/css/pages/data-list-view.css">
-    <!-- END: Page CSS-->
-
-    <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="../template/assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/home.css">
-    <!-- END: Custom CSS-->
-
-</head>
+<?php include_once "header_kasir.php"; ?>
 <!-- END: Head-->
 
+
+<script src="js/home.js"></script>
 <!-- BEGIN: Body-->
 
 <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
@@ -76,9 +37,9 @@
                 <li class="active nav-item"><a href="home.php"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Home</span></a>
                 </li>
                 </li>
-                <li class=" nav-item"><a href="app-email.html"><i class="feather icon-clipboard"></i><span class="menu-title" data-i18n="Menu">Menu</span></a>
+                <li class=" nav-item"><a href="menu.php"><i class="feather icon-clipboard"></i><span class="menu-title" data-i18n="Menu">Menu</span></a>
                 </li>
-                <li class=" nav-item"><a href="app-chat.html"><i class="feather icon-bar-chart"></i><span class="menu-title" data-i18n="Laporan Pesanan">Laporan Pesanan</span></a>
+                <li class=" nav-item"><a href="laporan-pemesanan.php"><i class="feather icon-bar-chart"></i><span class="menu-title" data-i18n="Laporan Pesanan">Laporan Pesanan</span></a>
                 </li>
             </ul>
         </div>
@@ -108,7 +69,7 @@
                                     <p class="mb-0">Total Pesanan Hari ini</p>
                                 </div>
                                 <div class="card-content">
-                                    <div id="line-area-chart-1"></div>
+                                    <br>
                                 </div>
                             </div>
                         </div>
@@ -124,7 +85,7 @@
                                     <p class="mb-0">Pesanan Pending</p>
                                 </div>
                                 <div class="card-content">
-                                    <div id="line-area-chart-2"></div>
+                                <br>
                                 </div>
                             </div>
                         </div>
@@ -140,7 +101,7 @@
                                     <p class="mb-0">Pesanan Siap Di Antar</p>
                                 </div>
                                 <div class="card-content">
-                                    <div id="line-area-chart-3"></div>
+                                <br>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +117,7 @@
                                     <p class="mb-0">Pesanan Selesai</p>
                                 </div>
                                 <div class="card-content">
-                                    <div id="line-area-chart-4"></div>
+                                <br>
                                 </div>
                             </div>
                         </div>
@@ -227,10 +188,10 @@
                                         </div>
                                     </td>
                                     <td class="product-action">
-                                        <div class="badge badge-success mr-1 mb-1">
+                                        <div class="badge badge-success mr-1 mb-1 action-edit" onclick="fnAcceptButtonOnClick()">
                                             <i class="feather icon-check font-medium-5"></i>
                                         </div>
-                                        <div class="badge badge-danger mr-1 mb-1">
+                                        <div class="badge badge-danger mr-1 mb-1 action-delete" onclick="fnRejectButtonOnClick()">
                                             <i class="feather icon-trash font-medium-5"></i>
                                         </div>
                                     </td>
@@ -250,7 +211,7 @@
                                         </div>
                                     </td>
                                     <td class="product-action">
-                                        <button type="button" class="btn btn-success mr-1 mb-1">Siap Diantar</button>
+                                        <button type="button" class="btn btn-success mr-1 mb-1" onclick="fnAcceptButtonOnClick()">Siap Diantar</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -268,7 +229,7 @@
                                         </div>
                                     </td>
                                     <td class="product-action">
-                                        <button type="button" class="btn btn-success mr-1 mb-1">Selesai</button>
+                                        <button type="button" onclick="fnAcceptButtonOnClick()" class="btn btn-success mr-1 mb-1">Selesai</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -279,7 +240,7 @@
                                     <td class="product-category">Computers</td>
                                     <td class="product-price">$69.99</td>
                                     <td>
-                                        <div class="chip chip-success">
+                                        <div class="chip chip-success" >
                                             <div class="chip-body">
                                                 <div class="chip-text">Selesai</div>
                                             </div>
@@ -331,8 +292,6 @@
 
     <!-- BEGIN: Page JS-->
     <script src="../template/app-assets/js/scripts/pages/dashboard-ecommerce.js"></script>
-    <!-- <script src="../template/app-assets/js/scripts/ui/data-list-view.js"></script> -->
-    <script src="js/home.js"></script>
     <!-- END: Page JS-->
 
 </body>

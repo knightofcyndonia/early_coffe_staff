@@ -1,52 +1,54 @@
 $(document).ready(function () {
-    checkDevice();
-    fnDataTableHome();
+  fnDataTableCustom("tblPesanan");
 });
 
-function checkDevice() {
-    if (window.matchMedia('(max-width: 767px)').matches) {
-        alert("Anda adalah kasir. Mohon buka di PC!");
-    } else {
-        return true;
+
+function fnAcceptButtonOnClick() {
+  Swal.fire({
+    title: 'Konfirmasi Pesanan?',
+    text: "Apakah anda yakin ingin menyetujui pesanan?",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#28c76f',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Setuju!',
+    cancelButtonText: 'Tidak!',
+    confirmButtonClass: 'btn btn-success',
+    cancelButtonClass: 'btn btn-danger ml-1',
+    buttonsStyling: false,
+  }).then(function (result) {
+    if (result.value) {
+      Swal.fire({
+        type: "success",
+        title: 'Deleted!',
+        text: 'Your file has been deleted.',
+        confirmButtonClass: 'btn btn-success',
+      })
     }
+  })
 }
 
-function fnDataTableHome() {
-
-    var dataListView = $("#tblPesanan").DataTable({
-        responsive: false,
-        columnDefs: [{
-            orderable: true,
-            targets: 0,
-        }],
-        dom: '<"top"<"actions action-btns"B><"action-filters"lf>><"clear">rt<"bottom"<"actions">p>',
-        oLanguage: {
-            sLengthMenu: "_MENU_",
-            sSearch: ""
-        },
-        aLengthMenu: [
-            [10, 15, 20],
-            [10, 15, 20]
-        ],
-        select: {
-            style: "multi"
-        },
-        order: [
-            [1, "asc"]
-        ],
-        bInfo: false,
-        pageLength: 10,
-        buttons: [{
-        }],
-        initComplete: function (settings, json) {
-            $(".dt-buttons .btn").removeClass("btn-secondary")
-        }
-    });
-
-    // Scrollbar
-    if ($(".data-items").length > 0) {
-        new PerfectScrollbar(".data-items", {
-            wheelPropagation: false
-        })
+function fnRejectButtonOnClick() {
+  Swal.fire({
+    title: 'Tolak Pesanan?',
+    text: "Apakah anda yakin ingin menolak pesanan?",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#28c76f',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Setuju!',
+    cancelButtonText: 'Tidak!',
+    confirmButtonClass: 'btn btn-danger',
+    cancelButtonClass: 'btn btn-warning ml-1',
+    buttonsStyling: false,
+  }).then(function (result) {
+    if (result.value) {
+      Swal.fire({
+        type: "success",
+        title: 'Deleted!',
+        text: 'Your file has been deleted.',
+        confirmButtonClass: 'btn btn-success',
+      })
     }
+  })
 }
