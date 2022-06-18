@@ -1,50 +1,15 @@
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 <!-- BEGIN: Head-->
-
-
-<?php include_once "header_kasir.php"; ?>
+<?php include_once "kasir_header.php"; ?>
+<title>Home</title>
 <!-- END: Head-->
 
 
-<script src="js/home.js"></script>
-<!-- BEGIN: Body-->
-
 <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
-
-    <!-- BEGIN: Header-->
-
-    <!-- END: Header-->
-
     <!-- BEGIN: Navigation -->
     <?php include_once "navigation_kasir.php"; ?>
     <!-- END: Navigation -->
-
-    <!-- BEGIN: Main Menu-->
-    <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
-        <div class="navbar-header">
-            <ul class="nav navbar-nav flex-row">
-                <li class="nav-item mr-auto"><a class="navbar-brand" href="../template/html/ltr/vertical-menu-template/index.html">
-                        <div class="brand-logo"></div>
-                        <h2 class="brand-text mb-0">Vuexy</h2>
-                    </a></li>
-                <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="feather icon-x d-block d-xl-none font-medium-4 primary toggle-icon"></i><i class="toggle-icon feather icon-disc font-medium-4 d-none d-xl-block collapse-toggle-icon primary" data-ticon="icon-disc"></i></a></li>
-            </ul>
-        </div>
-        <div class="shadow-bottom"></div>
-        <div class="main-menu-content">
-            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="active nav-item"><a href="home.php"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Home</span></a>
-                </li>
-                </li>
-                <li class=" nav-item"><a href="menu.php"><i class="feather icon-clipboard"></i><span class="menu-title" data-i18n="Menu">Menu</span></a>
-                </li>
-                <li class=" nav-item"><a href="laporan-pemesanan.php"><i class="feather icon-bar-chart"></i><span class="menu-title" data-i18n="Laporan Pesanan">Laporan Pesanan</span></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!-- END: Main Menu-->
 
     <!-- BEGIN: Content-->
     <div class="app-content content">
@@ -85,7 +50,7 @@
                                     <p class="mb-0">Pesanan Pending</p>
                                 </div>
                                 <div class="card-content">
-                                <br>
+                                    <br>
                                 </div>
                             </div>
                         </div>
@@ -101,7 +66,7 @@
                                     <p class="mb-0">Pesanan Siap Di Antar</p>
                                 </div>
                                 <div class="card-content">
-                                <br>
+                                    <br>
                                 </div>
                             </div>
                         </div>
@@ -117,7 +82,7 @@
                                     <p class="mb-0">Pesanan Selesai</p>
                                 </div>
                                 <div class="card-content">
-                                <br>
+                                    <br>
                                 </div>
                             </div>
                         </div>
@@ -240,7 +205,7 @@
                                     <td class="product-category">Computers</td>
                                     <td class="product-price">$69.99</td>
                                     <td>
-                                        <div class="chip chip-success" >
+                                        <div class="chip chip-success">
                                             <div class="chip-body">
                                                 <div class="chip-text">Selesai</div>
                                             </div>
@@ -270,31 +235,10 @@
         </p>
     </footer>
     <!-- END: Footer-->
-
-
-    <!-- BEGIN: Vendor JS-->
-    <script src="../template/app-assets/vendors/js/vendors.min.js"></script>
-    <script src="../template/app-assets/vendors/js/charts/apexcharts.min.js"></script>
-    <script src="../template/app-assets/vendors/js/extensions/dropzone.min.js"></script>
-    <script src="../template/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-    <script src="../template/app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
-    <script src="../template/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
-    <script src="../template/app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js"></script>
-    <script src="../template/app-assets/vendors/js/tables/datatable/dataTables.select.min.js"></script>
-    <script src="../template/app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
-    <!-- END: Page Vendor JS-->
-
-    <!-- BEGIN: Theme JS-->
-    <script src="../template/app-assets/js/core/app-menu.js"></script>
-    <script src="../template/app-assets/js/core/app.js"></script>
-    <script src="../template/app-assets/js/scripts/components.js"></script>
-    <!-- END: Theme JS-->
-
-    <!-- BEGIN: Page JS-->
-    <script src="../template/app-assets/js/scripts/pages/dashboard-ecommerce.js"></script>
-    <!-- END: Page JS-->
-
 </body>
 <!-- END: Body-->
 
 </html>
+
+<?php include_once 'kasir_footer.php';?>
+<script src="js/home.js?2"></script>

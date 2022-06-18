@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
-<?php include_once "header_kasir.php"; ?>
-<script src="js/menu.js"></script>
-
-<!-- BEGIN: Body-->
+<?php include_once "kasir_header.php"; ?>
+<title>Menu</title>
 
 <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 
@@ -146,3 +144,6 @@
 <!-- END: Body-->
 
 </html>
+
+<?php include_once 'kasir_footer.php';?>
+<script src="js/menu.js"></script>

@@ -30,6 +30,7 @@
     <link rel="stylesheet" type="text/css" href="./template/app-assets/css/core/menu/menu-types/vertical-menu.css">
     <link rel="stylesheet" type="text/css" href="./template/app-assets/css/core/colors/palette-gradient.css">
     <link rel="stylesheet" type="text/css" href="./template/app-assets/css/pages/authentication.css">
+    <link rel="stylesheet" type="text/css" href="./template/app-assets/vendors/css/pickers/pickadate/pickadate.css">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -47,6 +48,10 @@
     <script src="./template/app-assets/js/core/app-menu.js"></script>
     <script src="./template/app-assets/js/core/app.js"></script>
     <script src="./template/app-assets/js/scripts/components.js"></script>
+    <script src="./template/app-assets/vendors/js/pickers/pickadate/picker.js"></script>
+    <script src="./template/app-assets/vendors/js/pickers/pickadate/picker.date.js"></script>
+    <script src="./template/app-assets/vendors/js/pickers/pickadate/picker.time.js"></script>
+    <script src="./template/app-assets/vendors/js/pickers/pickadate/legacy.js"></script>
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
