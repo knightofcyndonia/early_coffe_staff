@@ -38,7 +38,8 @@
     <!-- END: Custom CSS-->
 
     <!-- BEGIN: Vendor JS-->
-    <script src="./template/app-assets/vendors/js/vendors.min.js"></script>
+    <script src="./template/app-assets/vendors/js/vendors.min.js"></script>]
+    <script src="./template/app-assets/vendors/js/extensions/sweetalert2.all.min.js?2"></script>
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
@@ -48,10 +49,6 @@
     <script src="./template/app-assets/js/core/app-menu.js"></script>
     <script src="./template/app-assets/js/core/app.js"></script>
     <script src="./template/app-assets/js/scripts/components.js"></script>
-    <script src="./template/app-assets/vendors/js/pickers/pickadate/picker.js"></script>
-    <script src="./template/app-assets/vendors/js/pickers/pickadate/picker.date.js"></script>
-    <script src="./template/app-assets/vendors/js/pickers/pickadate/picker.time.js"></script>
-    <script src="./template/app-assets/vendors/js/pickers/pickadate/legacy.js"></script>
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->

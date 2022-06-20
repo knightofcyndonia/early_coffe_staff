@@ -2,7 +2,7 @@
 
     <!-- BEGIN: Vendor JS-->
     <script src="../template/app-assets/vendors/js/vendors.min.js?2"></script>
-    <script src="../template/app-assets/vendors/js/charts/apexcharts.min.js?2"></script>
+    <!-- <script src="../template/app-assets/vendors/js/charts/apexcharts.min.js?2"></script> -->
     <script src="../template/app-assets/vendors/js/extensions/dropzone.min.js?2"></script>
     <script src="../template/app-assets/vendors/js/tables/datatable/datatables.min.js?2"></script>
     <script src="../template/app-assets/vendors/js/tables/datatable/datatables.buttons.min.js?2"></script>
@@ -30,6 +30,5 @@
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="../template/app-assets/js/scripts/pages/dashboard-ecommerce.js?2"></script>
     <script src="js/common.js?2"></script>
     <!-- END: Page JS-->

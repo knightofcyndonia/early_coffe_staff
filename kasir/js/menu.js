@@ -14,11 +14,29 @@ function onSubmitClick() {
             event.stopPropagation();
         } else {
             event.preventDefault();
+            var type = $("#btnSubmit").val();
+            var formData = new FormData(this);
+            var file_name = $("#gambar");
 
+            if (type === "Add Data") {
+                if ($("#gambar")[0].files[0] === undefined) {
+                    alert("Mohon masukkan gambar!");
+                    $("#gambar").focus();
+                    return false;
+                }
+            }
+            else{
+                if ($("#gambar")[0].files[0] !== undefined) {
+                    formData.append($("#gambar")[0].files[0], file_name);
+                }
+            }
+            formData.append("type", type);
             $.ajax({
                 type: "POST",
                 url: "menu-controller.php",
-                data: form.serialize() + "&type=" + $("#btnSubmit").val(),
+                processData: false,
+                contentType: false,
+                data: formData,
                 success: function (res) {
                     if (res.includes("Gagal")) {
                         Swal.fire({
@@ -40,9 +58,7 @@ function onSubmitClick() {
                             confirmButtonClass: 'btn btn-primary',
                             buttonsStyling: false,
                         }).then((result) => {
-                            if (result.value) {
-                                window.location = 'menu.php?';
-                            }
+                            window.location = 'menu.php';
                         });
                     }
 
@@ -68,39 +84,42 @@ function fnDelete($id) {
         cancelButtonClass: 'btn btn-warning ml-1',
         buttonsStyling: false,
     }).then(function (result) {
-        $.ajax({
-            type: "POST",
-            url: "menu-controller.php",
-            data: "id="+$id + "&type=hapus",
-            success: function (res) {
-                if (res.includes("Gagal")) {
-                    Swal.fire({
-                        title: "Gagal!",
-                        text: res,
-                        type: "error",
-                        confirmButtonClass: 'btn btn-primary',
-                        buttonsStyling: false,
-                    }).then((result) => {
-                        if (result.value) {
-                            window.location = 'menu.php?';
-                        }
-                    });
-                } else {
-                    Swal.fire({
-                        title: "Berhasil!",
-                        text: res,
-                        type: "success",
-                        confirmButtonClass: 'btn btn-primary',
-                        buttonsStyling: false,
-                    }).then((result) => {
-                        if (result.value) {
-                            window.location = 'menu.php?';
-                        }
-                    });
-                }
 
-            }
-        })
+        if (result.value) {
+            $.ajax({
+                type: "POST",
+                url: "menu-controller.php",
+                data: "id=" + $id + "&type=hapus",
+                success: function (res) {
+                    if (res.includes("Gagal")) {
+                        Swal.fire({
+                            title: "Gagal!",
+                            text: res,
+                            type: "error",
+                            confirmButtonClass: 'btn btn-primary',
+                            buttonsStyling: false,
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location = 'menu.php';
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Berhasil!",
+                            text: res,
+                            type: "success",
+                            confirmButtonClass: 'btn btn-primary',
+                            buttonsStyling: false,
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location = 'menu.php?';
+                            }
+                        });
+                    }
+
+                }
+            })
+        }
 
     })
 }
@@ -190,10 +209,18 @@ function fnDataTableMenu(tableId) {
 }
 
 function fnEdit(object) {
-    var nama = $(object).parent().siblings("td:eq(2)").text();
-    var jenis = $(object).parent().siblings("td:eq(3)").text();
-    var harga = $(object).parent().siblings("td:eq(4)").text();
+    var id = $(object).parent().siblings("td:eq(1)").find(".id").val().trim();
+    var nama = $(object).parent().siblings("td:eq(2)").text().trim();
+    var jenis = $(object).parent().siblings("td:eq(3)").text().trim();
+    var harga = $(object).parent().siblings("td:eq(4)").text().trim();
+    var nama_gambar = $(object).parent().siblings("td:eq(1)").find(".nama_gambar").val().trim();
 
+    if(harga.includes("Rp.")){
+        harga = harga.replace("Rp.", "").trim();
+    }
+
+    $("#newId").val(id);
+    $("#newGambar").val(nama_gambar);
     $('#newNama').val(nama);
     $('#newJenis').val(jenis);
     // $("#newJenis").trigger("chosen:updated");

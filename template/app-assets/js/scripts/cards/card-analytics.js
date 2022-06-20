@@ -52,12 +52,12 @@ $(window).on("load", function(){
         }
     }
 
-   var sessionChart = new ApexCharts(
-        document.querySelector("#session-chart"),
-        sessionChartoptions
-    );
+//    var sessionChart = new ApexCharts(
+//         document.querySelector("#session-chart"),
+//         sessionChartoptions
+//     );
 
-    sessionChart.render();
+//     sessionChart.render();
 
     // Product Order Chart
     // -----------------------------
@@ -119,12 +119,12 @@ $(window).on("load", function(){
 
     }
 
-   var orderChart = new ApexCharts(
-        document.querySelector("#product-order-chart"),
-        orderChartoptions
-    );
+//    var orderChart = new ApexCharts(
+//         document.querySelector("#product-order-chart"),
+//         orderChartoptions
+//     );
 
-    orderChart.render();
+//     orderChart.render();
 
 
     // Customer Chart
@@ -163,12 +163,12 @@ $(window).on("load", function(){
         }
     }
 
-    var customerChart = new ApexCharts(
-        document.querySelector("#customer-chart"),
-        customerChartoptions
-    );
+    // var customerChart = new ApexCharts(
+    //     document.querySelector("#customer-chart"),
+    //     customerChartoptions
+    // );
 
-    customerChart.render();
+    // customerChart.render();
 
     // Sales Chart
     // -----------------------------
@@ -241,12 +241,12 @@ $(window).on("load", function(){
 
     }
 
-    var salesChart = new ApexCharts(
-        document.querySelector("#sales-chart"),
-        salesChartoptions
-    );
+    // var salesChart = new ApexCharts(
+    //     document.querySelector("#sales-chart"),
+    //     salesChartoptions
+    // );
 
-    salesChart.render();
+    // salesChart.render();
 
     // Support Tracker Chart
     // -----------------------------
@@ -304,12 +304,12 @@ $(window).on("load", function(){
       labels: ['Completed Tickets'],
     }
 
-   var supportChart = new ApexCharts(
-        document.querySelector("#support-tracker-chart"),
-        supportChartoptions
-    );
+//    var supportChart = new ApexCharts(
+//         document.querySelector("#support-tracker-chart"),
+//         supportChartoptions
+//     );
 
-    supportChart.render();
+//     supportChart.render();
 
     // Revenue  Chart
     // -----------------------------
@@ -393,12 +393,12 @@ $(window).on("load", function(){
 
     }
 
-   var revenueChart = new ApexCharts(
-        document.querySelector("#revenue-chart"),
-        revenueChartoptions
-    );
+//    var revenueChart = new ApexCharts(
+//         document.querySelector("#revenue-chart"),
+//         revenueChartoptions
+//     );
 
-    revenueChart.render();
+//     revenueChart.render();
 
 
     // Goal Overview  Chart
@@ -464,12 +464,12 @@ $(window).on("load", function(){
 
     }
 
-    var goalChart = new ApexCharts(
-      document.querySelector("#goal-overview-chart"),
-      goalChartoptions
-    );
+    // var goalChart = new ApexCharts(
+    //   document.querySelector("#goal-overview-chart"),
+    //   goalChartoptions
+    // );
 
-    goalChart.render();
+    // goalChart.render();
 
 
     // Average Session Chart
@@ -515,12 +515,12 @@ $(window).on("load", function(){
         }
     }
 
-   var avgsessionChart = new ApexCharts(
-        document.querySelector("#avg-session-chart"),
-        avgsessionChartoptions
-    );
+//    var avgsessionChart = new ApexCharts(
+//         document.querySelector("#avg-session-chart"),
+//         avgsessionChartoptions
+//     );
 
-    avgsessionChart.render();
+//     avgsessionChart.render();
 
     // Sales  Chart
     // -----------------------------
@@ -604,12 +604,12 @@ $(window).on("load", function(){
 
     }
 
-   var salesavgChart = new ApexCharts(
-        document.querySelector("#sales-line-chart"),
-        salesavgChartoptions
-    );
+//    var salesavgChart = new ApexCharts(
+//         document.querySelector("#sales-line-chart"),
+//         salesavgChartoptions
+//     );
 
-    salesavgChart.render();
+//     salesavgChart.render();
 
     // Client Retention Chart
     // ----------------------------------
@@ -683,11 +683,11 @@ $(window).on("load", function(){
         },
     }
 
-   var retentionChart = new ApexCharts(
-        document.querySelector("#client-retention-chart"),
-        retentionChartoptions
-    );
+//    var retentionChart = new ApexCharts(
+//         document.querySelector("#client-retention-chart"),
+//         retentionChartoptions
+//     );
 
-    retentionChart.render();
+//     retentionChart.render();
 
 });

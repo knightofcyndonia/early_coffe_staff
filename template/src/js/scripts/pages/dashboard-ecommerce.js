@@ -86,14 +86,6 @@ $(window).on("load", function () {
     },
   }
 
-  var gainedlineChart = new ApexCharts(
-    document.querySelector("#line-area-chart-1"),
-    gainedlineChartoptions
-  );
-
-  gainedlineChart.render();
-
-
 
   // Line Area Chart - 2
   // ----------------------------------
@@ -156,13 +148,6 @@ $(window).on("load", function () {
       x: { show: false }
     },
   }
-
-  var revenuelineChart = new ApexCharts(
-    document.querySelector("#line-area-chart-2"),
-    revenuelineChartoptions
-  );
-
-  revenuelineChart.render();
 
 
   // Line Area Chart - 3
@@ -227,13 +212,6 @@ $(window).on("load", function () {
     },
   }
 
-  var saleslineChart = new ApexCharts(
-    document.querySelector("#line-area-chart-3"),
-    saleslineChartoptions
-  );
-
-  saleslineChart.render();
-
   // Line Area Chart - 4
   // ----------------------------------
 
@@ -295,13 +273,6 @@ $(window).on("load", function () {
       x: { show: false }
     },
   }
-
-  var orderlineChart = new ApexCharts(
-    document.querySelector("#line-area-chart-4"),
-    orderlineChartoptions
-  );
-
-  orderlineChart.render();
 
   // revenue-chart Chart
   // -----------------------------
@@ -385,13 +356,6 @@ $(window).on("load", function () {
 
   }
 
-  var revenueChart = new ApexCharts(
-    document.querySelector("#revenue-chart"),
-    revenueChartoptions
-  );
-
-  revenueChart.render();
-
 
   // Goal Overview  Chart
   // -----------------------------
@@ -455,13 +419,6 @@ $(window).on("load", function () {
     },
 
   }
-
-  var goalChart = new ApexCharts(
-    document.querySelector("#goal-overview-chart"),
-    goalChartoptions
-  );
-
-  goalChart.render();
 
   // Client Retention Chart
   // ----------------------------------
@@ -534,14 +491,6 @@ $(window).on("load", function () {
       x: { show: false }
     },
   }
-
-  var clientChart = new ApexCharts(
-    document.querySelector("#client-retention-chart"),
-    clientChartoptions
-  );
-
-  clientChart.render();
-
   // Session Chart
   // ----------------------------------
 
@@ -569,13 +518,6 @@ $(window).on("load", function () {
       }
     }
   }
-
-  var sessionChart = new ApexCharts(
-    document.querySelector("#session-chart"),
-    sessionChartoptions
-  );
-
-  sessionChart.render();
 
   // Customer Chart
   // -----------------------------
@@ -612,13 +554,6 @@ $(window).on("load", function () {
       }
     }
   }
-
-  var customerChart = new ApexCharts(
-    document.querySelector("#customer-chart"),
-    customerChartoptions
-  );
-
-  customerChart.render();
 
 });
 

@@ -2,7 +2,10 @@
 <html class="loading" lang="en" data-textdirection="ltr">
 
 
-<?php include_once("header.php"); ?>
+<?php
+include "koneksi.php";
+include_once("header.php");
+?>
 
 <!-- BEGIN: Body-->
 
@@ -32,9 +35,9 @@
                                         <p class="px-2">Welcome back, please login to your account.</p>
                                         <div class="card-content">
                                             <div class="card-body pt-1">
-                                                <form action="index.html">
+                                                <form method="post" action="">
                                                     <fieldset class="form-label-group form-group position-relative has-icon-left">
-                                                        <input type="text" class="form-control" id="user-name" placeholder="Username" required>
+                                                        <input type="text" name="username" class="form-control" id="user-name" placeholder="Username" required>
                                                         <div class="form-control-position">
                                                             <i class="feather icon-user"></i>
                                                         </div>
@@ -42,7 +45,7 @@
                                                     </fieldset>
 
                                                     <fieldset class="form-label-group position-relative has-icon-left">
-                                                        <input type="password" class="form-control" id="user-password" placeholder="Password" required>
+                                                        <input type="password" name="password" class="form-control" id="user-password" placeholder="Password" required>
                                                         <div class="form-control-position">
                                                             <i class="feather icon-lock"></i>
                                                         </div>
@@ -55,7 +58,7 @@
                                                         </select>
                                                     </fieldset>
 
-                                                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                                    <button type="submit" name="btnLogin" class="btn btn-primary btn-block">Login</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -82,3 +85,45 @@
 <!-- END: Body-->
 
 </html>
+
+<?php
+
+if (isset($_POST['btnLogin'])) {
+    $username = mysqli_real_escape_string($koneksi, $_POST['username']);
+    $password = mysqli_real_escape_string($koneksi, $_POST['password']);
+    $sql_login = "SELECT * FROM user WHERE BINARY username='$username' AND password='$password'";
+    $query_login = mysqli_query($koneksi, $sql_login);
+    $data_login = mysqli_fetch_array($query_login, MYSQLI_BOTH);
+    $jumlah_login = mysqli_num_rows($query_login);
+
+
+    if ($jumlah_login == 1) {
+        session_start();
+        // $_SESSION["ses_id"] = $data_login["id"];
+        // $_SESSION["ses_nama"] = $data_login["nama"];
+        // $_SESSION["ses_username"] = $data_login["username"];
+        $_SESSION["ses_username"] = "admin";
+
+        echo "<script>window.location = 'kasir/home.php'</script>";
+
+        // echo "<script>
+        // Swal.fire({
+        //     title: 'Berhasil!',
+        //     text: 'Login Berhasil!',
+        //     type: 'success',
+        //     confirmButtonClass: 'btn btn-primary',
+        //     buttonsStyling: false,
+        //   }).then((result) => {
+        //             window.location = 'kasir/home.php';
+        //     })</script>";
+    } else {
+        echo "<script>
+        Swal.fire({
+            title: 'Login Gagal!',
+            text: ' Username atau Password Salah!',
+            type: 'error',
+            confirmButtonClass: 'btn btn-primary',
+            buttonsStyling: false,
+          });</script>";
+    }
+}

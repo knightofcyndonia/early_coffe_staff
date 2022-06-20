@@ -1,7 +1,9 @@
+
+
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 <!-- BEGIN: Head-->
-<?php include_once "kasir_header.php"; ?>
+<?php include "kasir_header.php"; ?>
 <title>Home</title>
 <!-- END: Head-->
 
