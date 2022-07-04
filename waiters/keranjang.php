@@ -41,7 +41,6 @@ if (isset($_GET['nomor_meja'])) {
     <?php include_once "navigation_kasir.php"; ?>
 
     <form class="form-horizontal" novalidate id="frm">
-        <input type="text" name="nomor_meja" id="nomor_meja" value="<?php echo $nomor_meja ?>" />
         <!-- END: Header-->
 
         <!-- BEGIN: Content-->
@@ -73,7 +72,7 @@ if (isset($_GET['nomor_meja'])) {
                                 <div class="col-7">
                                     <h5 class="text-bold">
                                     <input type="text" class="form-control" 
-                                        id="txtNomorMeja" onkeypress="return isNumberKey(event, this)" maxlength="10" placeholder="Nomor Meja"/>
+                                        id="nomor_meja" name="nomor_meja" onkeypress="return isNumberKey(event, this)" maxlength="10" placeholder="Nomor Meja"/>
                                     </h5>
                                 </div>
                                 <div class="col">
