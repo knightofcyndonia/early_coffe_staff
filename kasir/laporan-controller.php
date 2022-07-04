@@ -8,10 +8,12 @@ $message = "";
 switch ($type) {
     case "tampil data":
         $listPesanan = [];
+        $dateFrom = $_POST['dateFrom'];
+        $dateTo = $_POST['dateTo'];
 
         $query = "SELECT id, nama_pelanggan, DATE_FORMAT(tanggal,'%d/%m/%Y') AS tanggal, nomor_meja, total_harga 
             FROM pesanan 
-            WHERE status = 'Selesai';";
+            WHERE status = 'Selesai' AND DATE(tanggal) BETWEEN '$dateFrom' AND '$dateTo'";
         $sql = $koneksi->query($query);
         while ($data = $sql->fetch_assoc()) {
             $pesanan = new \stdClass();

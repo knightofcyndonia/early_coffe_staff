@@ -14,9 +14,10 @@ switch ($type) {
         $queryupdateatt = "UPDATE pesanan SET status = '$status' WHERE id = $id_pesanan";
         $koneksi->query($queryupdateatt) or die('Unable to execute query. ' . mysqli_error($koneksi));
 
-        if ($status == "Selesai") {
-            $queryupdateatt = "UPDATE keranjang SET status = '$status' WHERE nomor_meja = $nomor_meja";
+        if ($status == "Selesai" || $status == "Ditolak") {
+            $queryupdateatt = "UPDATE keranjang SET status = '$status' WHERE nomor_meja = $nomor_meja AND status = 'Dipesan' ";
             $koneksi->query($queryupdateatt) or die('Unable to execute query. ' . mysqli_error($koneksi));
+            $message = $message . " status masuk sini" . $queryupdateatt;
         }
         $message = "Konfirmasi Berhasil!";
         break;

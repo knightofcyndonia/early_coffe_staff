@@ -45,7 +45,7 @@ function fnAcceptButtonOnClick(idPesanan, status, nomor_meja) {
             Swal.fire({
               type: "success",
               title: 'Berhasil!',
-              text: 'Konfirmasi Berhasil.',
+              text: res,
               confirmButtonClass: 'btn btn-success',
             }).then((result) =>{
               window.location = "home.php"
@@ -59,7 +59,7 @@ function fnAcceptButtonOnClick(idPesanan, status, nomor_meja) {
   })
 }
 
-function fnRejectButtonOnClick() {
+function fnRejectButtonOnClick(idPesanan, status, nomor_meja) {
   Swal.fire({
     title: 'Tolak Pesanan?',
     text: "Apakah anda yakin ingin menolak pesanan?",
@@ -74,12 +74,52 @@ function fnRejectButtonOnClick() {
     buttonsStyling: false,
   }).then(function (result) {
     if (result.value) {
-      Swal.fire({
-        type: "success",
-        title: 'Berhasil!',
-        text: 'Pesanan telah dibatalkan',
-        confirmButtonClass: 'btn btn-success',
-      })
+      if (result.value) {
+
+        $.ajax({
+          type: "POST",
+          url: "pesanan-controller.php",
+          data: {
+            id_pesanan: idPesanan,
+            status: status,
+            nomor_meja: nomor_meja,
+            type: "ganti status pesanan"
+          },
+          success: function (res) {
+            if (res.includes("Gagal")) {
+              Swal.fire({
+                title: "Gagal!",
+                text: res,
+                type: "error",
+                confirmButtonClass: 'btn btn-primary',
+                buttonsStyling: false,
+              }).then((result) => {
+                if (result.value) {
+                  window.location = 'menu.php?';
+                }
+              });
+            } else {
+              Swal.fire({
+                type: "success",
+                title: 'Berhasil!',
+                text: res,
+                confirmButtonClass: 'btn btn-success',
+              }).then((result) =>{
+                window.location = "home.php"
+              });
+            }
+          }
+        });
+      }
     }
   })
+}
+
+function filter(){
+  var status = $("#basicSelect").val();
+  if(status !== ""){
+    location.href = "home.php?status=" + status;
+  }else{
+    location.href = "home.php";
+  }
 }

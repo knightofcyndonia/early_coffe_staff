@@ -1,12 +1,10 @@
-
-<?php 
-    include "../koneksi.php";
-    session_start();
-    if(isset($_SESSION['ses_username'])){
-    }
-    else{
-        header("location:../login.php");
-    }
+<?php
+include "../koneksi.php";
+session_start();
+if (isset($_SESSION['ses_username'])) {
+} else {
+    header("location:../login.php");
+}
 ?>
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
@@ -112,14 +110,15 @@
                                                     <p><b>Status</b></p>
                                                     <fieldset class="form-group">
                                                         <select class="form-control" id="basicSelect">
-                                                            <option>IT</option>
-                                                            <option>Blade Runner</option>
-                                                            <option>Thor Ragnarok</option>
+                                                            <option value="">Semua</option>
+                                                            <option value="Dipesan">Dipesan</option>
+                                                            <option value="Sedang Diproses">Sedang Diproses</option>
+                                                            <option value="Siap Diantar">Siap Diantar</option>
                                                         </select>
                                                     </fieldset>
                                                 </div>
                                                 <div class="col-12">
-                                                    <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
+                                                    <button type="button" onclick="filter()" class="btn btn-primary mr-1 mb-1">Submit</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -150,64 +149,67 @@
                             <tbody>
 
                                 <?php
-                                
-                                $query = "SELECT * FROM pesanan WHERE status != 'Selesai';";
+                                $query = "SELECT * FROM pesanan WHERE status NOT IN ('Selesai', 'Ditolak') AND DATE(tanggal) = DATE(CURDATE()) ";
+
+                                if (isset($_GET['status'])) {
+                                    if ($_GET['status'] != "") {
+                                        $query = $query . " AND status = '" . $_GET['status']. "'";
+                                    }
+                                }
                                 $sql = $koneksi->query($query);
                                 $no = 1;
                                 while ($data = $sql->fetch_assoc()) {
 
                                     $id_pesanan = $data['id'];
                                 ?>
-                                <tr>
-                                    <td><?php echo $no++;?></td>
-                                    <td class="product-img"><?php echo "P". $data['id']?></td>
-                                    <td class="product-name"><?php echo $data['nomor_meja']?></td>
-                                    <td class="product-category">
-                                        <?php
-                                        //detail produk
-                                        $query_detail = "SELECT * FROM pesanan_detail WHERE id_pesanan=$id_pesanan";
-                                        $sql_detail = $koneksi->query($query_detail);
-                                        while ($data_detail = $sql_detail->fetch_assoc()) {
-                                            echo $data_detail['jumlah']. " ".  $data_detail['nama_menu'];
-                                            echo "<br>";
-                                        }
+                                    <tr>
+                                        <td><?php echo $no++; ?></td>
+                                        <td class="product-img"><?php echo "P" . $data['id'] ?></td>
+                                        <td class="product-name"><?php echo $data['nomor_meja'] ?></td>
+                                        <td class="product-category">
+                                            <?php
+                                            //detail produk
+                                            $query_detail = "SELECT * FROM pesanan_detail WHERE id_pesanan=$id_pesanan";
+                                            $sql_detail = $koneksi->query($query_detail);
+                                            while ($data_detail = $sql_detail->fetch_assoc()) {
+                                                echo $data_detail['jumlah'] . " " .  $data_detail['nama_menu'];
+                                                echo "<br>";
+                                            }
 
-                                        ?>
+                                            ?>
 
-                                    </td>
-                                    <td class="product-price"><?php echo "RP. ". $data['total_harga'] ?></td>
-                                    <td>
-                                        <div class="chip chip-warning">
-                                            <div class="chip-body">
-                                                <div class="chip-text"><?php echo $data['status'];?></div>
+                                        </td>
+                                        <td class="product-price"><?php echo "RP. " . $data['total_harga'] ?></td>
+                                        <td>
+                                            <div class="chip chip-warning">
+                                                <div class="chip-body">
+                                                    <div class="chip-text"><?php echo $data['status']; ?></div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
+                                        </td>
 
-                                    <td class="product-action">
-                                    <?php 
-                                        if($data['status'] == "Dipesan"){
-                                            echo 
-                                            '<div class="badge badge-success mr-1 mb-1 action-edit" onclick="fnAcceptButtonOnClick('.$data['id'].', \'Sedang diproses\')">
+                                        <td class="product-action">
+                                            <?php
+                                            if ($data['status'] == "Dipesan") {
+                                                echo
+                                                '<div class="badge badge-success mr-1 mb-1 action-edit" onclick="fnAcceptButtonOnClick(' . $data['id'] . ', \'Sedang diproses\', ' . $data['nomor_meja'] . ')">
                                                 <i class="feather icon-check font-medium-5"></i>
                                             </div>
-                                            <div class="badge badge-danger mr-1 mb-1 action-delete" onclick="fnRejectButtonOnClick('.$data['id'].')">
+                                            <div class="badge badge-danger mr-1 mb-1 action-delete" onclick="fnRejectButtonOnClick(' . $data['id'] . ', \'Ditolak\', ' . $data['nomor_meja'] . ')">
                                                 <i class="feather icon-trash font-medium-5"></i>
                                             </div>';
-                                        }
-                                        else if($data['status'] == "Sedang diproses"){
-                                            echo 
-                                            '<button type="button" class="btn btn-success mr-1 mb-1" 
-                                            onclick="fnAcceptButtonOnClick('.$data['id'].', \'Siap Diantar\')">Siap Diantar</button>';
-                                        }
-                                        else if($data['status'] == "Siap Diantar"){
-                                            echo 
-                                            '<button type="button" class="btn btn-success mr-1 mb-1" 
-                                            onclick="fnAcceptButtonOnClick('.$data['id'].', \'Selesai\', '.$data['nomor_meja'].')">Selesai</button>';
-                                        }
-                                    ?>
-                                    </td>
-                                </tr>
+                                            } else if ($data['status'] == "Sedang diproses") {
+                                                echo
+                                                '<button type="button" class="btn btn-success mr-1 mb-1" 
+                                            onclick="fnAcceptButtonOnClick(' . $data['id'] . ', \'Siap Diantar\', '. $data['nomor_meja'] .')">Siap Diantar</button>';
+                                            } else if ($data['status'] == "Siap Diantar") {
+                                                echo
+                                                '<button type="button" class="btn btn-success mr-1 mb-1" 
+                                            onclick="fnAcceptButtonOnClick(' . $data['id'] . ', \'Selesai\', ' . $data['nomor_meja'] . ')">Selesai</button>';
+                                            }
+                                            ?>
+                                        </td>
+                                    </tr>
                                 <?php } ?>
                                 <!-- <tr>
                                     <td></td>
@@ -288,5 +290,5 @@
 
 </html>
 
-<?php include_once 'kasir_footer.php';?>
+<?php include_once 'kasir_footer.php'; ?>
 <script src="js/home.js?2"></script>

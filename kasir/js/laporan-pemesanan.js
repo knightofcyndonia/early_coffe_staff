@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     fnDataTableCustom("table");
     $('#txtDateFrom, #txtDateTo').pickadate({
-        format: 'dd/mm/yyyy',
+        format: 'yyyy-mm-dd',
         selectYears: true,
         selectMonths: true
     });
@@ -31,8 +31,8 @@ function submitOnClick() {
             success: function (res) {
 
                 res = JSON.parse(res);
+                $("#tbody").html("");
                 if (res.length > 0) {
-                    $("#tbody").html("");
                     for (var i = 0; i < res.length; i++) {
                         var o = res[i];
                         var count = i + 1;
@@ -41,7 +41,7 @@ function submitOnClick() {
                             <td> P" + o.id + "</td>\
                             <td>" + o.nomor_meja + "</td>\
                             <td id='td_pesanan_detail_" + o.id + "'></td>\
-                            <td>" + o.total_harga + "</td>\
+                            <td> Rp. " + o.total_harga + "</td>\
                         </tr>");
 
 
