@@ -1,3 +1,14 @@
+
+<?php 
+    include "../koneksi.php";
+    session_start();
+    if(isset($_SESSION['ses_username'])){
+    }
+    else{
+        header("location:../login.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 <?php include_once "kasir_header.php"; ?>
@@ -41,7 +52,7 @@
                                                     </fieldset>
                                                 </div>
                                                 <div class="col-12">
-                                                    <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
+                                                    <button type="button" onclick="submitOnClick()" class="btn btn-primary mr-1 mb-1">Submit</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -67,15 +78,7 @@
                                     <th>Total Harga</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td class="">A331
-                                    </td>
-                                    <td class="product-name">Apple Watch series 4 GPS</td>
-                                    <td class="product-category">Computers</td>
-                                    <td class="product-price">$69.99</td>
-                                </tr>
+                            <tbody id="tbody">
                             </tbody>
                         </table>
                     </div>
