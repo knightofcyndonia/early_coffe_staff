@@ -1,9 +1,12 @@
+<?php
+session_start();
+include "koneksi.php";
+?>
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 
 
 <?php
-include "koneksi.php";
 include_once("header.php");
 ?>
 
@@ -98,24 +101,23 @@ if (isset($_POST['btnLogin'])) {
 
 
     if ($jumlah_login == 1) {
-        session_start();
-        // $_SESSION["ses_id"] = $data_login["id"];
-        // $_SESSION["ses_nama"] = $data_login["nama"];
-        // $_SESSION["ses_username"] = $data_login["username"];
+        $_SESSION["ses_id"] = $data_login["id"];
+        $_SESSION["ses_nama"] = $data_login["nama"];
+        $_SESSION["ses_username"] = $data_login["username"];
         $_SESSION["ses_username"] = "admin";
 
-        echo "<script>window.location = 'kasir/home.php'</script>";
+        // echo "<script>window.location = 'kasir/home.php'</script>";
 
-        // echo "<script>
-        // Swal.fire({
-        //     title: 'Berhasil!',
-        //     text: 'Login Berhasil!',
-        //     type: 'success',
-        //     confirmButtonClass: 'btn btn-primary',
-        //     buttonsStyling: false,
-        //   }).then((result) => {
-        //             window.location = 'kasir/home.php';
-        //     })</script>";
+        echo "<script>
+        Swal.fire({
+            title: 'Berhasil!',
+            text: 'Login Berhasil!',
+            type: 'success',
+            confirmButtonClass: 'btn btn-primary',
+            buttonsStyling: false,
+          }).then((result) => {
+                    window.location = 'kasir/home.php';
+            })</script>";
     } else {
         echo "<script>
         Swal.fire({

@@ -1,6 +1,12 @@
 
 <?php 
-    include "../koneksi.php"
+    include "../koneksi.php";
+    session_start();
+    if(isset($_SESSION['ses_username'])){
+    }
+    else{
+        header("location:../login.php");
+    }
 ?>
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
@@ -180,14 +186,24 @@
 
                                     <td class="product-action">
                                     <?php 
-                                        if($data['status'] == "Sedang diproses"){
+                                        if($data['status'] == "Dipesan"){
                                             echo 
-                                            '<div class="badge badge-success mr-1 mb-1 action-edit" onclick="fnAcceptButtonOnClick('.$data['id'].')">
+                                            '<div class="badge badge-success mr-1 mb-1 action-edit" onclick="fnAcceptButtonOnClick('.$data['id'].', \'Sedang diproses\')">
                                                 <i class="feather icon-check font-medium-5"></i>
                                             </div>
                                             <div class="badge badge-danger mr-1 mb-1 action-delete" onclick="fnRejectButtonOnClick('.$data['id'].')">
                                                 <i class="feather icon-trash font-medium-5"></i>
                                             </div>';
+                                        }
+                                        else if($data['status'] == "Sedang diproses"){
+                                            echo 
+                                            '<button type="button" class="btn btn-success mr-1 mb-1" 
+                                            onclick="fnAcceptButtonOnClick('.$data['id'].', \'Siap Diantar\')">Siap Diantar</button>';
+                                        }
+                                        else if($data['status'] == "Siap Diantar"){
+                                            echo 
+                                            '<button type="button" class="btn btn-success mr-1 mb-1" 
+                                            onclick="fnAcceptButtonOnClick('.$data['id'].', \'Selesai\', '.$data['nomor_meja'].')">Selesai</button>';
                                         }
                                     ?>
                                     </td>

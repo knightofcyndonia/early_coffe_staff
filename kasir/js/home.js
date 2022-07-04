@@ -3,7 +3,7 @@ $(document).ready(function () {
 });
 
 
-function fnAcceptButtonOnClick(idMenu) {
+function fnAcceptButtonOnClick(idPesanan, status, nomor_meja) {
   Swal.fire({
     title: 'Konfirmasi Pesanan?',
     text: "Apakah anda yakin ingin menyetujui pesanan?",
@@ -18,12 +18,43 @@ function fnAcceptButtonOnClick(idMenu) {
     buttonsStyling: false,
   }).then(function (result) {
     if (result.value) {
-      Swal.fire({
-        type: "success",
-        title: 'Berhasil!',
-        text: 'Konfirmasi Berhasil.',
-        confirmButtonClass: 'btn btn-success',
-      })
+
+      $.ajax({
+        type: "POST",
+        url: "pesanan-controller.php",
+        data: {
+          id_pesanan: idPesanan,
+          status: status,
+          nomor_meja: nomor_meja,
+          type: "ganti status pesanan"
+        },
+        success: function (res) {
+          if (res.includes("Gagal")) {
+            Swal.fire({
+              title: "Gagal!",
+              text: res,
+              type: "error",
+              confirmButtonClass: 'btn btn-primary',
+              buttonsStyling: false,
+            }).then((result) => {
+              if (result.value) {
+                window.location = 'menu.php?';
+              }
+            });
+          } else {
+            Swal.fire({
+              type: "success",
+              title: 'Berhasil!',
+              text: 'Konfirmasi Berhasil.',
+              confirmButtonClass: 'btn btn-success',
+            }).then((result) =>{
+              window.location = "home.php"
+            });
+          }
+        }
+      });
+
+
     }
   })
 }

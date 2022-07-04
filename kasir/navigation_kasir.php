@@ -15,12 +15,13 @@
                             <!--     i.ficon.feather.icon-menu-->
                             <li class="nav-item d-none d-lg-block"><a class="nav-link" href="home.php" data-toggle="tooltip" data-placement="top" title="Home">Home</a></li>
                             <li class="nav-item d-none d-lg-block"><a class="nav-link" href="menu.php" data-toggle="tooltip" data-placement="top" title="Menu">Menu</a></li>
+                            <li class="nav-item d-none d-lg-block"><a class="nav-link" href="buat-pesanan.php" data-toggle="tooltip" data-placement="top" title="Buat Pesanan">Buat Pesanan</a></li>
                             <li class="nav-item d-none d-lg-block"><a class="nav-link" href="laporan-pemesanan.php" data-toggle="tooltip" data-placement="top" title="Laporan Pesanan">Laporan pesanan</i></a></li>
                         </ul>
                     </div>
                     <ul class="nav navbar-nav float-right">
                         <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-expand"><i class="ficon feather icon-maximize"></i></a></li>
-                        <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon feather icon-bell"></i><span class="badge badge-pill badge-primary badge-up">5</span></a>
+                        <!-- <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon feather icon-bell"></i><span class="badge badge-pill badge-primary badge-up">5</span></a>
                             <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                                 <li class="dropdown-menu-header">
                                     <div class="dropdown-header m-0 p-2">
@@ -70,15 +71,16 @@
                                     </a></li>
                                 <li class="dropdown-menu-footer"><a class="dropdown-item p-1 text-center" href="javascript:void(0)">Read all notifications</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                                 <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">Kasir</span><span class="user-status">Available</span></div>
                                 <span>
                                     <img class="round" src="../template/app-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40" width="40">
                                 </span>
                             </a>
-                            <div id="dropdown-user-menu" class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="page-user-profile.html"><i class="feather icon-user"></i> Edit Profile</a><a class="dropdown-item" href="app-email.html"><i class="feather icon-mail"></i> My Inbox</a><a class="dropdown-item" href="app-todo.html"><i class="feather icon-check-square"></i> Task</a><a class="dropdown-item" href="app-chat.html"><i class="feather icon-message-square"></i> Chats</a>
-                                <div class="dropdown-divider"></div><a class="dropdown-item" href="auth-login.html"><i class="feather icon-power"></i> Logout</a>
+                            <div id="dropdown-user-menu" class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="../logout.php"><i class="feather icon-power"></i> 
+                                Logout</a>
                             </div>
                         </li>
                     </ul>
@@ -106,6 +108,8 @@
                 </li>
                 <li class=" nav-item" id="nav-item-menu"><a href="menu.php"><i class="feather icon-clipboard"></i><span class="menu-title" data-i18n="Menu">Menu</span></a>
                 </li>
+                <li class=" nav-item" id="nav-item-menu"><a href="buat-pesanan.php"><i class="feather icon-clipboard"></i><span class="menu-title" data-i18n="Buat Pesanan">Buat Pesanan</span></a>
+                </li>
                 <li class=" nav-item" id="nav-item-laporan-pemesanan"><a href="laporan-pemesanan.php"><i class="feather icon-bar-chart"></i><span class="menu-title" data-i18n="Laporan Pesanan">Laporan Pesanan</span></a>
                 </li>
             </ul>
@@ -126,10 +130,6 @@
                 $("#nav-item-" + currentPage).addClass("active");
             }
         }
-
-        // function fnDisplay(){
-        //     $("#dropdown-user-menu").show();
-        // }
     </script>
     
   <script src="../template/app-assets/vendors/js/vendors.min.js?"></script>
