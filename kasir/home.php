@@ -147,7 +147,6 @@ if (isset($_SESSION['ses_username'])) {
                                 </tr>
                             </thead>
                             <tbody>
-
                                 <?php
                                 $query = "SELECT * FROM pesanan WHERE status NOT IN ('Selesai', 'Ditolak') AND DATE(tanggal) = DATE(CURDATE()) ";
 
@@ -211,59 +210,6 @@ if (isset($_SESSION['ses_username'])) {
                                         </td>
                                     </tr>
                                 <?php } ?>
-                                <!-- <tr>
-                                    <td></td>
-                                    <td class="product-img"><img src="../template/app-assets/images/elements/apple-watch.png" alt="Img placeholder">
-                                    </td>
-                                    <td class="product-name">Apple Watch series 4 GPS</td>
-                                    <td class="product-category">Computers</td>
-                                    <td class="product-price">$69.99</td>
-                                    <td>
-                                        <div class="chip chip-warning">
-                                            <div class="chip-body">
-                                                <div class="chip-text">Sedang diproses</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="product-action">
-                                        <button type="button" class="btn btn-success mr-1 mb-1" onclick="fnAcceptButtonOnClick()">Siap Diantar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="product-img"><img src="../template/app-assets/images/elements/apple-watch.png" alt="Img placeholder">
-                                    </td>
-                                    <td class="product-name">Apple Watch series 4 GPS</td>
-                                    <td class="product-category">Computers</td>
-                                    <td class="product-price">$69.99</td>
-                                    <td>
-                                        <div class="chip chip-warning">
-                                            <div class="chip-body">
-                                                <div class="chip-text">Siap Diantar</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="product-action">
-                                        <button type="button" onclick="fnAcceptButtonOnClick()" class="btn btn-success mr-1 mb-1">Selesai</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="product-img"><img src="../template/app-assets/images/elements/apple-watch.png" alt="Img placeholder">
-                                    </td>
-                                    <td class="product-name">Apple Watch series 4 GPS</td>
-                                    <td class="product-category">Computers</td>
-                                    <td class="product-price">$69.99</td>
-                                    <td>
-                                        <div class="chip chip-success">
-                                            <div class="chip-body">
-                                                <div class="chip-text">Selesai</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="product-action">
-                                    </td>
-                                </tr> -->
                             </tbody>
                         </table>
                     </div>

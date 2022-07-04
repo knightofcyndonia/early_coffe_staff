@@ -94,7 +94,8 @@ include_once("header.php");
 if (isset($_POST['btnLogin'])) {
     $username = mysqli_real_escape_string($koneksi, $_POST['username']);
     $password = mysqli_real_escape_string($koneksi, $_POST['password']);
-    $sql_login = "SELECT * FROM user WHERE BINARY username='$username' AND password='$password'";
+    $role = mysqli_real_escape_string($koneksi, $_POST['ddlRole']);
+    $sql_login = "SELECT * FROM user WHERE BINARY username='$username' AND password='$password' AND role = '$role'";
     $query_login = mysqli_query($koneksi, $sql_login);
     $data_login = mysqli_fetch_array($query_login, MYSQLI_BOTH);
     $jumlah_login = mysqli_num_rows($query_login);
@@ -104,7 +105,15 @@ if (isset($_POST['btnLogin'])) {
         $_SESSION["ses_id"] = $data_login["id"];
         $_SESSION["ses_nama"] = $data_login["nama"];
         $_SESSION["ses_username"] = $data_login["username"];
-        $_SESSION["ses_username"] = "admin";
+        $_SESSION["ses_role"] = $data_login["role"];
+
+        $location = "";
+        if($data_login["role"] == "Kasir"){
+            $location = "kasir/home.php";
+        }
+        else if($data_login["role"] == "Waiters"){
+            $location = "waiters/home.php";
+        }
 
         // echo "<script>window.location = 'kasir/home.php'</script>";
 
@@ -116,7 +125,7 @@ if (isset($_POST['btnLogin'])) {
             confirmButtonClass: 'btn btn-primary',
             buttonsStyling: false,
           }).then((result) => {
-                    window.location = 'kasir/home.php';
+                    window.location = '$location';
             })</script>";
     } else {
         echo "<script>

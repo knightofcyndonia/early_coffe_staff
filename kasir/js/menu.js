@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    fnDataTableMenu("tblMenu");
+    fnDataTablePesan("tblMenu");
     // fnDropzone()
 
     onSubmitClick();
@@ -147,7 +147,7 @@ function fnDropzone() {
 
 }
 
-function fnDataTableMenu(tableId) {
+function fnDataTablePesan(tableId) {
 
     var dataListView = $("#" + tableId).DataTable({
         responsive: false,
