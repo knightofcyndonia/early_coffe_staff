@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    fnDataTableCustomWithExport("table");
+    fnDataTableCustom("table");
     $('#txtDateFrom, #txtDateTo').pickadate();
 });
 

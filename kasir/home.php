@@ -1,5 +1,7 @@
 
-
+<?php 
+    include "../koneksi.php"
+?>
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 <!-- BEGIN: Head-->
@@ -140,30 +142,58 @@
                                 </tr>
                             </thead>
                             <tbody>
+
+                                <?php
+                                
+                                $query = "SELECT * FROM pesanan WHERE status != 'Selesai';";
+                                $sql = $koneksi->query($query);
+                                $no = 1;
+                                while ($data = $sql->fetch_assoc()) {
+
+                                    $id_pesanan = $data['id'];
+                                ?>
                                 <tr>
-                                    <td></td>
-                                    <td class="product-img"><img src="../template/app-assets/images/elements/apple-watch.png" alt="Img placeholder">
+                                    <td><?php echo $no++;?></td>
+                                    <td class="product-img"><?php echo "P". $data['id']?></td>
+                                    <td class="product-name"><?php echo $data['nomor_meja']?></td>
+                                    <td class="product-category">
+                                        <?php
+                                        //detail produk
+                                        $query_detail = "SELECT * FROM pesanan_detail WHERE id_pesanan=$id_pesanan";
+                                        $sql_detail = $koneksi->query($query_detail);
+                                        while ($data_detail = $sql_detail->fetch_assoc()) {
+                                            echo $data_detail['jumlah']. " ".  $data_detail['nama_menu'];
+                                            echo "<br>";
+                                        }
+
+                                        ?>
+
                                     </td>
-                                    <td class="product-name">Apple Watch series 4 GPS</td>
-                                    <td class="product-category">Computers</td>
-                                    <td class="product-price">$69.99</td>
+                                    <td class="product-price"><?php echo "RP. ". $data['total_harga'] ?></td>
                                     <td>
                                         <div class="chip chip-warning">
                                             <div class="chip-body">
-                                                <div class="chip-text">Dipesan</div>
+                                                <div class="chip-text"><?php echo $data['status'];?></div>
                                             </div>
                                         </div>
                                     </td>
+
                                     <td class="product-action">
-                                        <div class="badge badge-success mr-1 mb-1 action-edit" onclick="fnAcceptButtonOnClick()">
-                                            <i class="feather icon-check font-medium-5"></i>
-                                        </div>
-                                        <div class="badge badge-danger mr-1 mb-1 action-delete" onclick="fnRejectButtonOnClick()">
-                                            <i class="feather icon-trash font-medium-5"></i>
-                                        </div>
+                                    <?php 
+                                        if($data['status'] == "Sedang diproses"){
+                                            echo 
+                                            '<div class="badge badge-success mr-1 mb-1 action-edit" onclick="fnAcceptButtonOnClick('.$data['id'].')">
+                                                <i class="feather icon-check font-medium-5"></i>
+                                            </div>
+                                            <div class="badge badge-danger mr-1 mb-1 action-delete" onclick="fnRejectButtonOnClick('.$data['id'].')">
+                                                <i class="feather icon-trash font-medium-5"></i>
+                                            </div>';
+                                        }
+                                    ?>
                                     </td>
                                 </tr>
-                                <tr>
+                                <?php } ?>
+                                <!-- <tr>
                                     <td></td>
                                     <td class="product-img"><img src="../template/app-assets/images/elements/apple-watch.png" alt="Img placeholder">
                                     </td>
@@ -215,7 +245,7 @@
                                     </td>
                                     <td class="product-action">
                                     </td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>

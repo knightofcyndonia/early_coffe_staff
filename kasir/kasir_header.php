@@ -1,20 +1,3 @@
-<!-- BEGIN: Head-->
-<?php
-session_start();
-// if (isset($_SESSION["ses_username"]) == "") {
-
-//   echo '<script>alert("' . $_SESSION["ses_username"] . '")</script>';
-//   // header("location: ../login.php");
-// } else {
-//   $data_id = $_SESSION["ses_id"];
-//   $data_nama = $_SESSION["ses_nama"];
-//   $data_user = $_SESSION["ses_username"];
-//   $data_level = $_SESSION["ses_level"];
-//   echo '<script>alert("' . $_SESSION["ses_username"] . '")</script>';
-// }
-?>
-
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -58,7 +41,7 @@ session_start();
   <!-- END: Custom CSS-->
 
 
-  <script src="../template/app-assets/vendors/js/vendors.min.js?2"></script>
+  <script src="../template/app-assets/vendors/js/vendors.min.js?"></script>
 
 </head>
 <!-- END: Head-->

@@ -3,7 +3,7 @@ $(document).ready(function () {
 });
 
 
-function fnAcceptButtonOnClick() {
+function fnAcceptButtonOnClick(idMenu) {
   Swal.fire({
     title: 'Konfirmasi Pesanan?',
     text: "Apakah anda yakin ingin menyetujui pesanan?",
@@ -14,14 +14,14 @@ function fnAcceptButtonOnClick() {
     confirmButtonText: 'Setuju!',
     cancelButtonText: 'Tidak!',
     confirmButtonClass: 'btn btn-success',
-    cancelButtonClass: 'btn btn-danger ml-1',
+    cancelButtonClass: 'btn btn-outline-danger ml-1',
     buttonsStyling: false,
   }).then(function (result) {
     if (result.value) {
       Swal.fire({
         type: "success",
-        title: 'Deleted!',
-        text: 'Your file has been deleted.',
+        title: 'Berhasil!',
+        text: 'Konfirmasi Berhasil.',
         confirmButtonClass: 'btn btn-success',
       })
     }
@@ -45,8 +45,8 @@ function fnRejectButtonOnClick() {
     if (result.value) {
       Swal.fire({
         type: "success",
-        title: 'Deleted!',
-        text: 'Your file has been deleted.',
+        title: 'Berhasil!',
+        text: 'Pesanan telah dibatalkan',
         confirmButtonClass: 'btn btn-success',
       })
     }
