@@ -19,7 +19,7 @@
                     <ul class="nav navbar-nav bookmark-icons">
                         <li class="nav-item d-none d-lg-block"><a class="nav-link" href="home.php" data-toggle="tooltip" data-placement="top" title="Home">Home</a></li>
                         <li class="nav-item d-none d-lg-block"><a class="nav-link" href="menu.php" data-toggle="tooltip" data-placement="top" title="Menu">Menu</a></li>
-                        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="laporan-pemesanan.php" data-toggle="tooltip" data-placement="top" title="Laporan Pesanan">Laporan pesanan</i></a></li>
+                        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="../logout.php" data-toggle="tooltip" data-placement="top" title="Logout">Logout</i></a></li>
                     </ul>
                 </div>
                 <ul class="nav navbar-nav float-right">
@@ -36,7 +36,7 @@
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
-            <li class="nav-item mr-auto"><a class="navbar-brand" href="../template/html/ltr/vertical-menu-template/index.html">
+            <li class="nav-item mr-auto"><a class="navbar-brand" href="home.php">
                     <div class="brand-logo"></div>
                     <h2 class="brand-text mb-0">Vuexy</h2>
                 </a></li>
@@ -51,7 +51,9 @@
             </li>
             <li class=" nav-item" id="nav-item-menu"><a href="menu.php"><i class="feather icon-clipboard"></i><span class="menu-title" data-i18n="Menu">Menu</span></a>
             </li>
-            <li class=" nav-item" id="nav-item-laporan-pemesanan"><a href="laporan-pemesanan.php"><i class="feather icon-bar-chart"></i><span class="menu-title" data-i18n="Laporan Pesanan">Laporan Pesanan</span></a>
+            <li class=" nav-item" id="nav-item-keranjang"><a id="keranjang-side" href="keranjang.php"><i class="feather icon-shopping-cart"></i><span class="menu-title" data-i18n="Menu">Pesanan </span></a>
+            </li>
+            <li class=" nav-item" id="nav-item-logout"><a href="../logout.php"><i class="feather icon-power"></i><span class="menu-title" data-i18n="Logout">Logout</span></a>
             </li>
         </ul>
     </div>
