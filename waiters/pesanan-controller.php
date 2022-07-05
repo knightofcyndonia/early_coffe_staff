@@ -34,7 +34,7 @@ switch ($type) {
     $id_pesanan = 0;
 
     //cek pesanan apakah ada atau tidak
-    $sql_cek = "SELECT id FROM pesanan WHERE status NOT IN ('Selesai', 'Ditolak') AND nomor_meja = '" . $nomor_meja. "'";
+    $sql_cek = "SELECT id FROM pesanan WHERE status NOT IN ('Selesai', 'Ditolak') AND nomor_meja = '" . $nomor_meja . "'";
     $query_cek = mysqli_query($koneksi, $sql_cek);
     $data_cek = mysqli_fetch_array($query_cek, MYSQLI_BOTH);
     $jumlah_pesanan = mysqli_num_rows($query_cek);
@@ -72,15 +72,15 @@ switch ($type) {
           $jumlah = floatval($_POST["jumlah"][$i]);
           $harga = floatval($_POST["txtHarga"][$i]);
           $subtotal = $jumlah * $harga;
-          
+
           $query_detail = "INSERT INTO pesanan_detail (id_pesanan, id_menu, nama_menu, jumlah, harga) 
           VALUES ($id_pesanan, $id_menu, '$nama_menu', $jumlah, $subtotal)";
           $query_simpan_detail = $koneksi->query($query_detail) or die('Unable to execute query. ' . mysqli_error($koneksi));
           $total_harga += $subtotal;
-          $message = $message. "querys lopping" . $query_simpan_detail;
+          $message = $message . "querys lopping" . $query_simpan_detail;
           updateStatusKeranjang($koneksi, $i);
         }
-        
+
         $message = $message . " selsai";
       }
     }
@@ -125,10 +125,28 @@ switch ($type) {
     break;
 
 
+  case "ganti status pesanan":
+    $status = $_POST['status'];
+    $id_pesanan = $_POST['id_pesanan'];
+    $nomor_meja = $_POST['nomor_meja'];
+
+    $queryupdateatt = "UPDATE pesanan SET status = '$status' WHERE id = $id_pesanan";
+    $koneksi->query($queryupdateatt) or die('Unable to execute query. ' . mysqli_error($koneksi));
+
+    if ($status == "Selesai" || $status == "Ditolak") {
+      $queryupdateatt = "UPDATE keranjang SET status = '$status' WHERE nomor_meja = $nomor_meja AND status = 'Dipesan' ";
+      $koneksi->query($queryupdateatt) or die('Unable to execute query. ' . mysqli_error($koneksi));
+      $message = $message . " status masuk sini" . $queryupdateatt;
+    }
+    $message = "Konfirmasi Berhasil!";
+    break;
+    
   default:
     $message = "gagal";
     break;
 }
+
+
 
 echo $message;
 

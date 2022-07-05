@@ -52,12 +52,11 @@ if (isset($_GET['nomor_meja'])) {
                     <div class="content-body">
                         <section>
                             <?php
-
                             $nama = "";
                             $readonly = "";
                             $status = "Belum Pesan";
                             //cek query pesanan.
-                            $sql_cek = "SELECT * FROM pesanan where nomor_meja = '$nomor_meja' AND status NOT IN ('selesai' ,'ditolak') AND date(tanggal) = DATE(CURDATE()) ORDER BY ID DESC LIMIT 1";
+                            $sql_cek = "SELECT * FROM pesanan where (nomor_meja = '$nomor_meja' ||nomor_meja = '0') AND status NOT IN ('selesai' ,'ditolak') AND date(tanggal) = DATE(CURDATE()) ORDER BY ID DESC LIMIT 1";
                             $query_cek = mysqli_query($koneksi, $sql_cek);
                             $data_cek = mysqli_fetch_array($query_cek, MYSQLI_BOTH);
                             $jumlah_pesanan = mysqli_num_rows($query_cek);
@@ -73,6 +72,10 @@ if (isset($_GET['nomor_meja'])) {
                                     <h5 class="text-bold">
                                     <input type="text" class="form-control" 
                                         id="nomor_meja" name="nomor_meja" onkeypress="return isNumberKey(event, this)" maxlength="10" placeholder="Nomor Meja"/>
+                                        <div id="alert-nomor-meja" class="alert alert-danger mt-1 alert-validation-msg" role="alert" style="display: none;">
+                                            <i class="feather icon-info mr-1 align-middle"></i>
+                                            <span>Mohon masukkan nomor meja</span>
+                                        </div>
                                     </h5>
                                 </div>
                                 <div class="col">
@@ -93,7 +96,6 @@ if (isset($_GET['nomor_meja'])) {
                                         <i class="feather icon-info mr-1 align-middle"></i>
                                         <span>Mohon masukkan nama</span>
                                     </div>
-                                    <!-- </fieldset> -->
                                 </div>
 
                             </div>';

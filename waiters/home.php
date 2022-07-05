@@ -28,109 +28,64 @@ if (isset($_GET['nomor_meja'])) {
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-            <div class="content-detached content-right">
-                <div class="content-body">
-                    <!-- Ecommerce Content Section Starts -->
-                    <section id="ecommerce-header">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="ecommerce-header-items">
-                                    <div class="view-options">
-                                        <div class="view-btn-option">
-                                            <button class="btn btn-white view-btn" onclick="semua()">
-                                                Semua
-                                            </button>
-                                            <button class="btn btn-white view-btn" onclick="makanan()">
-                                                Makanan
-                                            </button>
-                                            <button class="btn btn-white view-btn" onclick="minuman()">
-                                                Minuman
-                                            </button>
-                                        </div>
-                                    </div>
+            <div class="row" id="basic-table">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Konfirm</h4>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Nomor</th>
+                                                <th>Kode Pesanan</th>
+                                                <th>Meja</th>
+                                                <th>Menu</th>
+                                                <th>Total Harga</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $query = "SELECT * FROM pesanan WHERE status = 'Siap Diantar' AND DATE(tanggal) = DATE(CURDATE()) ";
+                                            $sql = $koneksi->query($query);
+                                            $no = 1;
+                                            while ($data = $sql->fetch_assoc()) {
+
+                                                $id_pesanan = $data['id'];
+                                            ?>
+                                                <tr>
+                                                    <th scope="row"><?php echo $no ?></th>
+                                                    <td><?php echo "P" . $data['id'] ?></td>
+                                                    <td><?php echo $data['nomor_meja'] ?></td>
+                                                    <td>
+                                                        <?php
+                                                        //detail produk
+                                                        $query_detail = "SELECT * FROM pesanan_detail WHERE id_pesanan=$id_pesanan";
+                                                        $sql_detail = $koneksi->query($query_detail);
+                                                        while ($data_detail = $sql_detail->fetch_assoc()) {
+                                                            echo "- ". $data_detail['jumlah'] . " " .  $data_detail['nama_menu'];
+                                                            echo "<br>";
+                                                        }
+                                                        ?>
+                                                    </td>
+                                                    <td><?php echo "RP. " . $data['total_harga'] ?></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-success mr-1 mb-1" onclick="fnAcceptButtonOnClick('<?php echo $data['id']; ?>', '<?php echo $data['nomor_meja'];?>')">Selesai</button>
+                                                    </td>
+                                                </tr>
+
+                                            <?php $no = $no + 1;
+                                            } ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
-                    </section>
-                    <!-- Ecommerce Content Section Starts -->
-                    <!-- background Overlay when sidebar is shown  starts-->
-                    <div class="shop-content-overlay"></div>
-                    <!-- background Overlay when sidebar is shown  ends-->
-
-                    <!-- Ecommerce Search Bar Starts -->
-                    <section id="ecommerce-searchbar">
-                        <div class="row mt-1">
-                            <div class="col-sm-12">
-                                <fieldset class="form-group position-relative">
-                                    <input type="text" class="form-control search-product" id="iconLeft5" placeholder="Cari" onkeyup="cari(this)">
-                                    <div class="form-control-position">
-                                        <i class="feather icon-search"></i>
-                                    </div>
-                                </fieldset>
-                            </div>
-                        </div>
-                    </section>
-                    <!-- Ecommerce Search Bar Ends -->
-
-                    <!-- Ecommerce Products Starts -->
-                    <section id="ecommerce-products" class="grid-view">
-
-                        <?php
-                        $query = "SELECT * FROM menu;";
-                        $sql = $koneksi->query($query);
-                        $no = 1;
-                        $url_att = "$base_url/uploads/menu";
-                        while ($data = $sql->fetch_assoc()) {
-                            echo "<div class='card ecommerce-card menu-card menu-" . $data['jenis'] . "'>
-                                    <div class='card-content'>
-                                        <div class='item-img text-center'>
-                                            <a href='#'>
-                                                <img class='img-fluid' src='$url_att/" . $data['id'] . "/" . $data['gambar'] . "' alt='img-placeholder'></a>
-                                        </div>
-                                        <div class='card-body'>
-                                            <div class='item-wrapper'>
-                                                <div>
-                                                    <h6 class='item-price'>
-                                                        Rp " . $data['harga'] . "
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                            <div class='item-name'>
-                                                <a href='#'>" . $data['nama_menu'] . "</a>
-                                            </div>
-                                            <div>
-                                                <p class='item-description'>
-                                                <div class='badge badge-secondary jenis'>" . $data['jenis'] . "</div>
-                                                </p>
-                                            </div>
-                                            
-                                        </div>
-                                        <div class='item-options text-center'>
-                                            <div class='item-wrapper'>
-                                                <div class='item-rating'>
-                                                    <div class='badge badge-primary badge-md'>
-                                                        <span>4</span> <i class='feather icon-star'></i>
-                                                    </div>
-                                                </div>
-                                                <div class='item-cost'>
-                                                    <h6 class='item-price'>
-                                                        $39.99
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                            <div class='cart' onclick='addToCart(this, " . $data['id'] . ")'>
-                                                <i class='feather icon-shopping-cart'></i> <span class='add-to-cart'>TAMBAHKAN KE PESANAN</span> 
-                                                <a href='#' on class='view-in-cart d-none'>View In Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>";
-                        }
-
-                        ?>
-                    </section>
-                    <!-- Ecommerce Products Ends -->
-
+                    </div>
                 </div>
             </div>
         </div>

@@ -8,24 +8,35 @@ $(document).ready(function () {
     $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
 
     jumlahChange();
+    nomorMejaChange();
     namaChange();
     calculateTotalharga();
     onsubmit();
     setButton();
 });
 
-function setButton(){
-    if($(".card-item-belum-dipesan").length <= 0 ){
+
+function setButton() {
+    if ($(".card-item-belum-dipesan").length <= 0) {
         $("#div-pesan").remove();
     }
 }
 
-function namaChange(){
-    $("#txtNama").change(function(){
-        if(this.value !== ""){
+function namaChange() {
+    $("#txtNama").change(function () {
+        if (this.value !== "") {
             $("#alert-nama").css("display", "none");
-        }   
+        }
     })
+}
+
+function nomorMejaChange(){
+    $("#nomor_meja").change(function () {
+        if (this.value !== "") {
+            $("#alert-nomor-meja").css("display", "none");
+        }
+    })
+    
 }
 
 function removeItem(o) {
@@ -76,8 +87,13 @@ function calculateTotalharga() {
 function onsubmit() {
     var nomor_meja = $("#txtNomorMeja").val();
     $("#btnSubmit").click(function () {
-        if ($("#txtNama").val().trim() === "") {
-            alertMsg();
+        if($("#nomor_meja").val().trim() === ""){
+            $("#nomor_meja").focus();
+            $("#alert-nomor-meja").css("display", "block");
+        }
+       else if ($("#txtNama").val().trim() === "") {
+            $("#txtNama").focus();
+            $("#alert-nama").css("display", "block");
         } else {
             Swal.fire({
                 title: "Warning!",
@@ -92,8 +108,8 @@ function onsubmit() {
             }).then((result) => {
                 if (result.value) {
                     $.ajax({
-                        type:"POST",
-                        url : "pesanan-controller.php",
+                        type: "POST",
+                        url: "pesanan-controller.php",
                         data: $("#frm").serialize() + "&type=buat pesanan",
                         success: function (res) {
                             console.log(res);
@@ -122,7 +138,7 @@ function onsubmit() {
                                     }
                                 });
                             }
-        
+
                         }
 
                     });
@@ -133,7 +149,7 @@ function onsubmit() {
     });
 }
 
-function alertMsg(){
+function alertMsg() {
     $("#txtNama").focus();
     $("#alert-nama").css("display", "block");
 }
