@@ -5,6 +5,36 @@ if (isset($_SESSION['ses_username'])) {
 } else {
     header("location:../login.php");
 }
+
+$totalpesanan = 0;
+$sql = $koneksi->query("SELECT count(id) as totalpesanan from pesanan where DATE(tanggal) = DATE(curdate())");
+while ($data = $sql->fetch_assoc()) {
+    $totalpesanan = $data['totalpesanan'];
+}
+
+$pending = 0;
+$sql = $koneksi->query("SELECT count(id) as pending from pesanan where DATE(tanggal) = DATE(curdate()) 
+        AND status = 'Dipesan'");
+while ($data = $sql->fetch_assoc()) {
+
+    $pending = $data['pending'];
+}
+
+$siapdiapntar = 0;
+$sql = $koneksi->query("SELECT count(id) as siapdiapntar from pesanan where DATE(tanggal) = DATE(curdate()) 
+        AND status = 'Siap diantar'");
+while ($data = $sql->fetch_assoc()) {
+
+    $pendisiapdiapntarng = $data['siapdiapntar'];
+}
+
+$selesai = 0;
+$sql = $koneksi->query("SELECT count(id) as selesai from pesanan where DATE(tanggal) = DATE(curdate()) 
+        AND status = 'Selesai'");
+while ($data = $sql->fetch_assoc()) {
+    $selesai = $data['selesai'];
+}
+
 ?>
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
@@ -38,7 +68,7 @@ if (isset($_SESSION['ses_username'])) {
                                             <i class="feather icon-users text-primary font-medium-5"></i>
                                         </div>
                                     </div>
-                                    <h2 class="text-bold-700 mt-1">92.6k</h2>
+                                    <h2 class="text-bold-700 mt-1"><?php echo $totalpesanan ?></h2>
                                     <p class="mb-0">Total Pesanan Hari ini</p>
                                 </div>
                                 <div class="card-content">
@@ -54,7 +84,7 @@ if (isset($_SESSION['ses_username'])) {
                                             <i class="feather icon-credit-card text-success font-medium-5"></i>
                                         </div>
                                     </div>
-                                    <h2 class="text-bold-700 mt-1">97.5k</h2>
+                                    <h2 class="text-bold-700 mt-1"><?php echo $pending ?></h2>
                                     <p class="mb-0">Pesanan Pending</p>
                                 </div>
                                 <div class="card-content">
@@ -70,7 +100,7 @@ if (isset($_SESSION['ses_username'])) {
                                             <i class="feather icon-shopping-cart text-danger font-medium-5"></i>
                                         </div>
                                     </div>
-                                    <h2 class="text-bold-700 mt-1">36%</h2>
+                                    <h2 class="text-bold-700 mt-1"><?php echo $siapdiapntar?></h2>
                                     <p class="mb-0">Pesanan Siap Di Antar</p>
                                 </div>
                                 <div class="card-content">
@@ -86,7 +116,7 @@ if (isset($_SESSION['ses_username'])) {
                                             <i class="feather icon-package text-warning font-medium-5"></i>
                                         </div>
                                     </div>
-                                    <h2 class="text-bold-700 mt-1">97.5K</h2>
+                                    <h2 class="text-bold-700 mt-1"><?php echo $selesai ?></h2>
                                     <p class="mb-0">Pesanan Selesai</p>
                                 </div>
                                 <div class="card-content">
@@ -152,7 +182,7 @@ if (isset($_SESSION['ses_username'])) {
 
                                 if (isset($_GET['status'])) {
                                     if ($_GET['status'] != "") {
-                                        $query = $query . " AND status = '" . $_GET['status']. "'";
+                                        $query = $query . " AND status = '" . $_GET['status'] . "'";
                                     }
                                 }
                                 $sql = $koneksi->query($query);
@@ -200,7 +230,7 @@ if (isset($_SESSION['ses_username'])) {
                                             } else if ($data['status'] == "Sedang diproses") {
                                                 echo
                                                 '<button type="button" class="btn btn-success mr-1 mb-1" 
-                                            onclick="fnAcceptButtonOnClick(' . $data['id'] . ', \'Siap Diantar\', '. $data['nomor_meja'] .')">Siap Diantar</button>';
+                                            onclick="fnAcceptButtonOnClick(' . $data['id'] . ', \'Siap Diantar\', ' . $data['nomor_meja'] . ')">Siap Diantar</button>';
                                             } else if ($data['status'] == "Siap Diantar") {
                                                 echo
                                                 '<button type="button" class="btn btn-success mr-1 mb-1" 

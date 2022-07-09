@@ -53,8 +53,6 @@ function fnAcceptButtonOnClick(idPesanan, status, nomor_meja) {
           }
         }
       });
-
-
     }
   })
 }

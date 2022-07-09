@@ -106,11 +106,11 @@
                 <li class="nav-item" id="nav-item-home"><a href="home.php"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Home</span></a>
                 </li>
                 </li>
-                <li class=" nav-item" id="nav-item-menu"><a href="menu.php"><i class="feather icon-clipboard"></i><span class="menu-title" data-i18n="Menu">Menu</span></a>
+                <li class="nav-item" id="nav-item-menu"><a href="menu.php"><i class="feather icon-clipboard"></i><span class="menu-title" data-i18n="Menu">Menu</span></a>
                 </li>
-                <li class=" nav-item" id="nav-item-menu"><a href="buat-pesanan.php"><i class="feather icon-clipboard"></i><span class="menu-title" data-i18n="Buat Pesanan">Buat Pesanan</span></a>
+                <li class="nav-item" id="nav-item-buat-pesanan"><a href="buat-pesanan.php"><i class="feather icon-clipboard"></i><span class="menu-title" data-i18n="Buat Pesanan">Buat Pesanan</span></a>
                 </li>
-                <li class=" nav-item" id="nav-item-laporan-pemesanan"><a href="laporan-pemesanan.php"><i class="feather icon-bar-chart"></i><span class="menu-title" data-i18n="Laporan Pesanan">Laporan Pesanan</span></a>
+                <li class="nav-item" id="nav-item-laporan-pemesanan"><a href="laporan-pemesanan.php"><i class="feather icon-bar-chart"></i><span class="menu-title" data-i18n="Laporan Pesanan">Laporan Pesanan</span></a>
                 </li>
             </ul>
         </div>
